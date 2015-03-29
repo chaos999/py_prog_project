@@ -1,0 +1,39 @@
+www# web server PQDN
+ www.owasp.org# PQDN
+www.owasp.org. # should normalize to above!
+localhost # some comment
+  www.skyportsystems.com #PQDN, whitespace
+facebook.com
+128.8.74.2 # wam
+12345 # this is an error! decimal IP addresses are not acceptable
+# disabled.com disabled
+ tumblr.com
+   itunes.apple.com
+8.  # garbage
+rob.rob.ro!b. #garbage
+­rob #this one is an error
+www.mindtwin.com­ #this is an error too
+10.10.10.10 255.255.255.255
+localhost
+
+
+www­.mindtwin.com # me too
+1234.dig.com # same
+msnbc.com
+     235.10.123.45
+8888# this one should be an error
+8.8.8.8 # v4
+localhost
+8.8.8.8.in­addr.arpa # sneaky almost normalized
+123.456.789.101 # error, obviously
+    localhost.
+1000.1000.1000.a
+010121314
+8.8.8.8.in­addr.arpa. # sneaky 2
+microsoft.com windowsupdate
+ 128.8.5.2
+apple.com
+# google.com apple.com apple.co.uk # nothing ##
+google.com # tricky
+￼￼￼￼
+google.com # we already saw this

@@ -1,0 +1,56 @@
+{
+    "discoveredInformation": [
+        {
+            "discoveredName": "noc.net.umd.edu.", 
+            "normalized": "128.8.5.2", 
+            "occurences": {
+                "as": "128.8.5.2", 
+                "in line": 34
+            }, 
+            "type": "IPv4"
+        }, 
+        {
+            "discoveredName": "noc.net.umd.edu.", 
+            "normalized": "128.8.5.2", 
+            "occurences": {
+                "as": "128.8.5.2", 
+                "in line": 34
+            }, 
+            "type": "IPv4"
+        }, 
+        {
+            "discoveredName": "noc.net.umd.edu.", 
+            "normalized": "128.8.5.2", 
+            "occurences": {
+                "as": "128.8.5.2", 
+                "in line": 34
+            }, 
+            "type": "IPv4"
+        }, 
+        {
+            "discoveredName": "noc.net.umd.edu.", 
+            "normalized": "128.8.5.2", 
+            "occurences": {
+                "as": "128.8.5.2", 
+                "in line": 34
+            }, 
+            "type": "IPv4"
+        }
+    ], 
+    "errors": {}, 
+    "linesWithToken": [
+        26
+    ], 
+    "tokenSkippedAlreadySeen": [
+        5
+    ], 
+    "totalErrors": [
+        0
+    ], 
+    "totalFQDN": [
+        17
+    ], 
+    "totalIPv4": [
+        4
+    ]
+}
