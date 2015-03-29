@@ -1,29 +1,29 @@
 {
     "discoveredInformation": [
         {
-            "discoveredName": "noc.net.umd.edu.", 
-            "normalized": "128.8.5.2", 
+            "discoveredName": "recursns1.umd.edu.", 
+            "normalized": "128.8.74.2", 
             "occurences": {
-                "as": "128.8.5.2", 
-                "in line": 34
+                "as": "128.8.74.2", 
+                "in line": 7
             }, 
             "type": "IPv4"
         }, 
         {
-            "discoveredName": "noc.net.umd.edu.", 
-            "normalized": "128.8.5.2", 
+            "discoveredName": "recursns1.umd.edu.", 
+            "normalized": "235.10.123.45", 
             "occurences": {
-                "as": "128.8.5.2", 
-                "in line": 34
+                "as": "235.10.123.45", 
+                "in line": 23
             }, 
             "type": "IPv4"
         }, 
         {
-            "discoveredName": "noc.net.umd.edu.", 
-            "normalized": "128.8.5.2", 
+            "discoveredName": "google-public-dns-a.google.com.", 
+            "normalized": "8.8.8.8", 
             "occurences": {
-                "as": "128.8.5.2", 
-                "in line": 34
+                "as": "8.8.8.8", 
+                "in line": 25
             }, 
             "type": "IPv4"
         }, 
@@ -38,19 +38,9 @@
         }
     ], 
     "errors": {}, 
-    "linesWithToken": [
-        26
-    ], 
-    "tokenSkippedAlreadySeen": [
-        5
-    ], 
-    "totalErrors": [
-        0
-    ], 
-    "totalFQDN": [
-        17
-    ], 
-    "totalIPv4": [
-        4
-    ]
+    "linesWithToken": 26, 
+    "tokenSkippedAlreadySeen": 5, 
+    "totalErrors": 0, 
+    "totalFQDN": 17, 
+    "totalIPv4": 4
 }

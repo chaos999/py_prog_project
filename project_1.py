@@ -51,10 +51,10 @@ def main():
     TKN_map = extract_token(raw_data)
     get_token_ready(TKN_map)
     line_token_count = (skipped_token_count + ipv4_count + fqdn_count)
-    summary_cache = {"linesWithToken": [line_token_count],\
-    		"totalFQDN": [fqdn_count],\
-			"totalIPv4": [ipv4_count], "totalErrors": [error_count],\
-			"tokenSkippedAlreadySeen": [skipped_token_count],\
+    summary_cache = {"linesWithToken": line_token_count,\
+    		"totalFQDN": fqdn_count,\
+			"totalIPv4": ipv4_count, "totalErrors": error_count,\
+			"tokenSkippedAlreadySeen": skipped_token_count,\
 			"errors": error_cache,\
 			"discoveredInformation": discovered_cache}
     
@@ -94,17 +94,17 @@ def get_token_ready(ext_tokens):
 			normalized_cache['localhost'].append(keys)
 			continue
 		elif (values in raw_cache.keys()):
-			print "VV", values, keys
-			print "VV-R", raw_cache
 			raw_cache[values].append(keys)
 			skipped_token_count += 1
-			print "VV-GGGGGG", raw_cache
 		else:
 			if is_token_validIpv4(values):
 				print "VALID-IP", values
 				ipv4_count += 1
+				print "VV", values, keys
+				print "VV-R", raw_cache
 				raw_cache[values].append(keys)
 				addr=reversename.from_address(values)
+				print "VV-GGGGGG", raw_cache
 				try:
 					ip_to_fqdn = str(resolver.query(addr,"PTR")[0])
 				except Exception:
@@ -112,12 +112,16 @@ def get_token_ready(ext_tokens):
 					
 				#normalized_cache[values] = keys
 				normalized_cache[values].append(keys)
-				ip_addr_cache["type"] = "IPv4"
+				print "IP1", ip_addr_cache
+				print "DS1", discovered_cache
 				ip_addr_cache["occurences"] = {"as" : values, "in line" : keys }
 				ip_addr_cache["normalized"] = values
 				ip_addr_cache["discoveredName"] = ip_to_fqdn
+				ip_addr_cache["type"] = "IPv4"
 				uniq_ip_count += 1
-				discovered_cache.append(ip_addr_cache)
+				discovered_cache.append(dict(ip_addr_cache))
+				print "IP2", ip_addr_cache
+				print "DS2", discovered_cache
 						
 			elif is_token_validHostname(values):
 				fqdn_a_records = []
