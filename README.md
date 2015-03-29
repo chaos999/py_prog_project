@@ -17,7 +17,14 @@ The features of this Utility are
 			  - some more errors conditions will be added in subsequent versions
 			  - lookup for PQDN
 			  - better formatting
-		
+		- Version 2 :
+			  - Fixed an issue with Discovering Info
+		- Version 3 :
+			  - added all Error Conditions
+			  - Discovered A & CName records also
+			  - cleanup of source code
+			  - better formatting
+	
 
 <h4>Execution & Usage</h4>
 	Program verified with Python Version - 2.7.5 on a Mac (OS X - 10.9.5)

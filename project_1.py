@@ -1,11 +1,14 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import sys
 import json
 import re
 from dns import resolver,reversename,exception
+import dns.exception
+from dns.resolver import Resolver, NXDOMAIN, NoNameservers, Timeout, NoAnswer
 from twisted.names.dns import RRHeader
 from collections import defaultdict
+from dns.exception import DNSException
 
 raw_cache = defaultdict(list)
 normalized_cache = defaultdict(list)
@@ -13,6 +16,7 @@ error_cache = defaultdict(list)
 ip_addr_cache = {}
 dn_cache = {}
 discovered_cache = []
+total_error_cache = []
 summary_cache = defaultdict(list)
 	
 line_token_count = 0
@@ -31,8 +35,13 @@ def main():
 	# Input File Processing
     if (len(sys.argv) != 2):
         print "Please give filename to process"
-        filename = raw_input("Enter Filename: ")               
-    file_to_process = open(filename, 'r')
+        filename = raw_input("Enter Filename: ")
+    
+    try:               
+     	file_to_process = open(filename, 'r')
+    except:
+    	print "Unable to open the file", filename, "Exiting - Try again" 
+    	exit(2)
     
     j_file = 'json_readable_file'
     output_JD = open(j_file, 'w')
@@ -46,7 +55,7 @@ def main():
     	raw_data[lnum] = line
     
     lines_processed = lnum
-    print "L is ", (lnum)
+
     	
     TKN_map = extract_token(raw_data)
     get_token_ready(TKN_map)
@@ -55,7 +64,7 @@ def main():
     		"totalFQDN": fqdn_count,\
 			"totalIPv4": ipv4_count, "totalErrors": error_count,\
 			"tokenSkippedAlreadySeen": skipped_token_count,\
-			"errors": error_cache,\
+			"errors": total_error_cache,\
 			"discoveredInformation": discovered_cache}
     
     json.dump(summary_cache, output_JD, indent=4, sort_keys=True)
@@ -67,13 +76,6 @@ def extract_token(raw_lines):
 		token = token1.strip()
 		if (token != ''):
 			token_map[key] = token
-	#token_map = {key: list(value) for key, value in raw_lines.items()}
-    
-	for keys,values in token_map.items():
-		#if(values==5):
-		#print type(keys), len(keys)
-		print (keys)
-   		print(values)
    	
    	return token_map
     	
@@ -84,11 +86,11 @@ def get_token_ready(ext_tokens):
 	global uniq_ip_count
 	global raw_cache
 	global fqdn_count
+	global error_count
 	raw_cache['localhost'] = [0]
 	normalized_cache['localhost'] = [0]
 	for keys,values in ext_tokens.items():
 		if((values == 'localhost.') or (values == 'localhost')):
-			print "DUPE"
 			skipped_token_count += 1
 			raw_cache['localhost'].append(keys)
 			normalized_cache['localhost'].append(keys)
@@ -98,65 +100,99 @@ def get_token_ready(ext_tokens):
 			skipped_token_count += 1
 		else:
 			if is_token_validIpv4(values):
-				print "VALID-IP", values
 				ipv4_count += 1
-				print "VV", values, keys
-				print "VV-R", raw_cache
 				raw_cache[values].append(keys)
 				addr=reversename.from_address(values)
-				print "VV-GGGGGG", raw_cache
 				try:
 					ip_to_fqdn = str(resolver.query(addr,"PTR")[0])
 				except Exception:
-					print "ERROR resolving IP_to_FQDN"
+					Ex_Msg = "ERROR resolving IP_to_FQDN"
 					
-				#normalized_cache[values] = keys
 				normalized_cache[values].append(keys)
-				print "IP1", ip_addr_cache
-				print "DS1", discovered_cache
 				ip_addr_cache["occurences"] = {"as" : values, "in line" : keys }
 				ip_addr_cache["normalized"] = values
 				ip_addr_cache["discoveredName"] = ip_to_fqdn
 				ip_addr_cache["type"] = "IPv4"
 				uniq_ip_count += 1
 				discovered_cache.append(dict(ip_addr_cache))
-				print "IP2", ip_addr_cache
-				print "DS2", discovered_cache
+
 						
 			elif is_token_validHostname(values):
 				fqdn_a_records = []
 				fqdn_cname_recs = []
-				print "HOST VALID", values, keys
 				fqdn_count += 1
 				raw_cache[values].append(keys)
-				#raw_cache[values] = keys
 				try:
 					a_recs = dns.resolver.query(values, "A")
-					for recs in a_recs:
-						fqdn_a_records.append(recs)
-				except Exception:
-					print "ERROR while getting A records"
+					if len(a_recs) > 0:
+						Ex_Flg = False
+						for recs in a_recs:
+							fqdn_a_records.append(str(recs))
+						normalized_cache[values].append(keys)
+						dn_cache["type"] = "DN"
+						dn_cache["occurences"] = {"as": values, "in line": keys }
+						dn_cache["normalized"] = values
+						dn_cache["recordsAType"] = fqdn_a_records
+				except NXDOMAIN:
+					Ex_Flg = True
+					Ex_Msg = "Non-Existant Domain ", values
+				except NoNameservers:
+					Ex_Flg = True
+					Ex_Msg = "ERROR while getting A records"
+				except Timeout:
+					Ex_Flg = True
+					Ex_Msg = "Timeout during resolution of ", values
+				except DNSException:
+					Ex_Flg = True
+					Ex_Msg = "ERROR - Unhandled Exception"
 					
-				#normalized_cache[values] = keys
-				normalized_cache[values].append(keys)
-				dn_cache["type"] = "DN"
-				dn_cache["occurences"] = {"as": values, "in line": keys }
-				dn_cache["normalized"] = values
-				dn_cache["recordsAType"] = fqdn_a_records
-
+				if(Ex_Flg):
+					fqdn_count += 1
+					discovered_cache.append(dict(dn_cache))
+				else:
+					error_count += 1
+					error_cache["type"] = "ERROR"
+					error_cache["occurences"] = {"as": values,"in line": keys }
+					error_cache["normalized"] = values
+					error_cache["ErrMessage"] = str(Ex_Msg)
+					total_error_cache.append(dict(error_cache))
+					
 				try:
 					c_recs = dns.resolver.query(values, "CNAME")
-					for crecs in c_recs:
-						fqdn_cname_recs.append(crecs)
-				except Exception:
-					print "ERROR while getting CNAME records"	
+					if len(a_recs) > 0:
+						Ex_Flg = False
+						for crecs in c_recs:
+							fqdn_cname_recs.append(str(crecs))
+						normalized_cache[values].append(keys)
+						dn_cache["type"] = "DN"
+						dn_cache["occurences"] = {"as": values, "in line": keys }
+						dn_cache["normalized"] = values
+						dn_cache["recordsCType"] = fqdn_cname_recs
+				except NXDOMAIN:
+					Ex_Flg = True
+					Ex_Msg = "Non-Existant Domain ", values
+				except NoNameservers:
+					Ex_Flg = True
+					Ex_Msg = "ERROR while getting CName records"
+				except Timeout:
+					Ex_Flg = True
+					Ex_Msg = "Timeout during resolution of ", values
+				except DNSException:
+					Ex_Flg = True
+					Ex_Msg = "ERROR - Unhandled Exception"					
+				if(Ex_Flg):
+					fqdn_count += 1
+					discovered_cache.append(dict(dn_cache))
+				else:
+					error_count += 1
+					error_cache["type"] = "ERROR"
+					error_cache["occurences"] = {"as": values,"in line": keys }
+					error_cache["normalized"] = values
+					error_cache["ErrMessage"] = str(Ex_Msg)
+					total_error_cache.append(dict(error_cache))
+	
 					
-				#normalized_cache[values] = keys
-				normalized_cache[values].append(keys)
-				dn_cache["type"] = "DN"
-				dn_cache["occurences"] = {"as": values, "in line": keys }
-				dn_cache["normalized"] = values
-				dn_cache["recordsCTypes"] = fqdn_cname_recs			
+		
 				
 					
 				
