@@ -123,7 +123,7 @@ def get_token_ready(ext_tokens):
 				
 				if(Ex_Flg):
 					error_count += 1
-					error_cache["type"] = "ERROR"
+					error_cache["type"] = "ERROR - seen while IP to FQDN check"
 					error_cache["occurances"] = {"as": values,"in line": keys }
 					error_cache["normalized"] = str(addr)
 					error_cache["ErrMessage"] = str(Ex_Msg)
@@ -140,7 +140,7 @@ def get_token_ready(ext_tokens):
 				try:
 					a_recs = dns.resolver.query(values, "A")
 					if len(a_recs) > 0:
-						Ex_Flg = False
+						Ex_FlgA = False
 						for recs in a_recs:
 							fqdn_a_records.append(str(recs))
 						normalized_cache[values].append(keys)
@@ -149,25 +149,23 @@ def get_token_ready(ext_tokens):
 						dn_cache["normalized"] = values
 						dn_cache["recordsAType"] = fqdn_a_records
 				except NXDOMAIN:
-					Ex_Flg = True
-					Ex_Msg = "Non-Existant Domain ", values
+					Ex_FlgA = True
+					Ex_MsgA = "Non-Existant Domain ", values
 				except NoNameservers:
-					Ex_Flg = True
-					Ex_Msg = "ERROR while getting A records"
+					Ex_FlgA = True
+					Ex_MsgA = "ERROR while getting A records"
 				except Timeout:
-					Ex_Flg = True
-					Ex_Msg = "Timeout during resolution of ", values
+					Ex_FlgA = True
+					Ex_MsgA = "Timeout during resolution of ", values
 				except DNSException:
-					Ex_Flg = True
-					Ex_Msg = "ERROR - Unhandled Exception"
+					Ex_FlgA = True
+					Ex_MsgA = "ERROR - Unhandled Exception"
 					
-				if(Ex_Flg):
+				if(Ex_FlgA):
 					error_count += 1
-					error_cache["type"] = "ERROR"
-					error_cache["occurances"] = {"as": values,"in line": keys }
+					error_cache["type"] = "ERROR - seen while A & CName record fetch"
+					error_cache["occurences"] = {"as": values,"in line": keys }
 					error_cache["normalized"] = values
-					error_cache["ErrMessage"] = str(Ex_Msg)
-					total_error_cache.append(dict(error_cache))
 				else:
 					fqdn_count += 1
 					discovered_cache.append(dict(dn_cache))
@@ -175,7 +173,7 @@ def get_token_ready(ext_tokens):
 				try:
 					c_recs = dns.resolver.query(values, "CNAME")
 					if len(c_recs) > 0:
-						Ex_Flg = False
+						Ex_FlgC = False
 						for crecs in c_recs:
 							fqdn_cname_recs.append(str(crecs))
 						normalized_cache[values].append(keys)
@@ -184,27 +182,36 @@ def get_token_ready(ext_tokens):
 						dn_cache["normalized"] = values
 						dn_cache["recordsCType"] = fqdn_cname_recs
 				except NXDOMAIN:
-					Ex_Flg = True
-					Ex_Msg = "Non-Existant Domain ", values
+					Ex_FlgC = True
+					Ex_MsgC = "Non-Existant Domain ", values
 				except NoNameservers:
-					Ex_Flg = True
-					Ex_Msg = "ERROR while getting CName records"
+					Ex_FlgC = True
+					Ex_MsgC = "ERROR while getting CName records"
 				except Timeout:
-					Ex_Flg = True
-					Ex_Msg = "Timeout during resolution of ", values
+					Ex_FlgC = True
+					Ex_MsgC = "Timeout during resolution of ", values
 				except DNSException:
-					Ex_Flg = True
-					Ex_Msg = "ERROR - Unhandled Exception"					
-				if(Ex_Flg):
+					Ex_FlgC = True
+					Ex_MsgC = "ERROR - Unhandled Exception"					
+				if(Ex_FlgC):
 					error_count += 1
-					error_cache["type"] = "ERROR"
+					if(Ex_FlgA):
+						error_cache["ErrMessage"] = {"For A records": str(Ex_MsgA),\
+													"For CName records":\
+													str(Ex_MsgC)}
+					else:
+						error_cache["ErrMessage"] = {"For CName records":\
+													 str(Ex_MsgC)}								
+					error_cache["type"] = "ERROR - seen while A & CName record fetch"
 					error_cache["occurences"] = {"as": values,"in line": keys }
 					error_cache["normalized"] = values
-					error_cache["ErrMessage"] = str(Ex_Msg)
 					total_error_cache.append(dict(error_cache))
 				else:
 					fqdn_count += 1
 					discovered_cache.append(dict(dn_cache))
+					if(Ex_FlgA):
+						error_cache["ErrMessage"] = {"For A records": str(Ex_MsgA)}
+						total_error_cache.append(dict(error_cache))
 	
 					
 		

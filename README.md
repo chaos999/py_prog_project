@@ -28,12 +28,12 @@ The features of this Utility are
 			  - Fixed Version 3 issues 
 			  	- removed empty strings, fixed Cname records and added Error check code
 			  	  IP address validation
+		- Version 5 :
+			  - Error Messages for A & CName records had overlapping info, so formatted
+			    and reduced that
 	
 <h4>Issues</h4>
-	- Known Issues with Version:3 (working on them)
-		- couple of empty {} in JSON display
-		- some of the C records dont look right
-		- still need to add Error Code info for Bad IPs
+
 
 <h4>Execution & Usage</h4>
 	Program verified with Python Version - 2.7.5 on a Mac (OS X - 10.9.5)
