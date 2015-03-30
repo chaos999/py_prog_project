@@ -24,6 +24,10 @@ The features of this Utility are
 			  - Discovered A & CName records also
 			  - cleanup of source code
 			  - better formatting
+		- Version 4 :
+			  - Fixed Version 3 issues 
+			  	- removed empty strings, fixed Cname records and added Error check code
+			  	  IP address validation
 	
 <h4>Issues</h4>
 	- Known Issues with Version:3 (working on them)

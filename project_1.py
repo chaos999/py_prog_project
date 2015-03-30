@@ -66,7 +66,6 @@ def main():
 			"tokenSkippedAlreadySeen": skipped_token_count,\
 			"errors": total_error_cache,\
 			"discoveredInformation": discovered_cache}
-    
     json.dump(summary_cache, output_JD, indent=4, sort_keys=True)
 
 def extract_token(raw_lines):
@@ -105,16 +104,32 @@ def get_token_ready(ext_tokens):
 				addr=reversename.from_address(values)
 				try:
 					ip_to_fqdn = str(resolver.query(addr,"PTR")[0])
-				except Exception:
-					Ex_Msg = "ERROR resolving IP_to_FQDN"
-					
-				normalized_cache[values].append(keys)
-				ip_addr_cache["occurences"] = {"as" : values, "in line" : keys }
-				ip_addr_cache["normalized"] = values
-				ip_addr_cache["discoveredName"] = ip_to_fqdn
-				ip_addr_cache["type"] = "IPv4"
-				uniq_ip_count += 1
-				discovered_cache.append(dict(ip_addr_cache))
+					Ex_Flg = False
+					normalized_cache[values].append(keys)
+					ip_addr_cache["occurences"] = {"as" : values, "in line" : keys }
+					ip_addr_cache["normalized"] = values
+					ip_addr_cache["discoveredName"] = ip_to_fqdn
+					ip_addr_cache["type"] = "IPv4"
+					uniq_ip_count += 1
+				except NoNameservers:
+					Ex_Flg = True
+					Ex_Msg = "ERROR while getting A records"
+				except Timeout:
+					Ex_Flg = True
+					Ex_Msg = "Timeout during resolution of ", addr
+				except DNSException:
+					Ex_Flg = True
+					Ex_Msg = "ERROR - Unhandled Exception"
+				
+				if(Ex_Flg):
+					error_count += 1
+					error_cache["type"] = "ERROR"
+					error_cache["occurances"] = {"as": values,"in line": keys }
+					error_cache["normalized"] = str(addr)
+					error_cache["ErrMessage"] = str(Ex_Msg)
+					total_error_cache.append(dict(error_cache))	
+				else:
+					discovered_cache.append(dict(ip_addr_cache))
 
 						
 			elif is_token_validHostname(values):
@@ -130,7 +145,7 @@ def get_token_ready(ext_tokens):
 							fqdn_a_records.append(str(recs))
 						normalized_cache[values].append(keys)
 						dn_cache["type"] = "DN"
-						dn_cache["occurences"] = {"as": values, "in line": keys }
+						dn_cache["occurances"] = {"as": values, "in line": keys }
 						dn_cache["normalized"] = values
 						dn_cache["recordsAType"] = fqdn_a_records
 				except NXDOMAIN:
@@ -147,19 +162,19 @@ def get_token_ready(ext_tokens):
 					Ex_Msg = "ERROR - Unhandled Exception"
 					
 				if(Ex_Flg):
-					fqdn_count += 1
-					discovered_cache.append(dict(dn_cache))
-				else:
 					error_count += 1
 					error_cache["type"] = "ERROR"
-					error_cache["occurences"] = {"as": values,"in line": keys }
+					error_cache["occurances"] = {"as": values,"in line": keys }
 					error_cache["normalized"] = values
 					error_cache["ErrMessage"] = str(Ex_Msg)
 					total_error_cache.append(dict(error_cache))
+				else:
+					fqdn_count += 1
+					discovered_cache.append(dict(dn_cache))
 					
 				try:
 					c_recs = dns.resolver.query(values, "CNAME")
-					if len(a_recs) > 0:
+					if len(c_recs) > 0:
 						Ex_Flg = False
 						for crecs in c_recs:
 							fqdn_cname_recs.append(str(crecs))
@@ -181,15 +196,15 @@ def get_token_ready(ext_tokens):
 					Ex_Flg = True
 					Ex_Msg = "ERROR - Unhandled Exception"					
 				if(Ex_Flg):
-					fqdn_count += 1
-					discovered_cache.append(dict(dn_cache))
-				else:
 					error_count += 1
 					error_cache["type"] = "ERROR"
 					error_cache["occurences"] = {"as": values,"in line": keys }
 					error_cache["normalized"] = values
 					error_cache["ErrMessage"] = str(Ex_Msg)
 					total_error_cache.append(dict(error_cache))
+				else:
+					fqdn_count += 1
+					discovered_cache.append(dict(dn_cache))
 	
 					
 		

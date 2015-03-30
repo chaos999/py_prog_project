@@ -1,10 +1,8 @@
 {
     "discoveredInformation": [
-        {}, 
-        {}, 
         {
             "normalized": "www.owasp.org", 
-            "occurences": {
+            "occurances": {
                 "as": "www.owasp.org", 
                 "in line": 2
             }, 
@@ -15,7 +13,7 @@
         }, 
         {
             "normalized": "www.owasp.org.", 
-            "occurences": {
+            "occurances": {
                 "as": "www.owasp.org.", 
                 "in line": 3
             }, 
@@ -25,10 +23,43 @@
             "type": "DN"
         }, 
         {
-            "normalized": "facebook.com", 
+            "normalized": "www.skyportsystems.com", 
+            "occurances": {
+                "as": "www.skyportsystems.com", 
+                "in line": 5
+            }, 
+            "recordsAType": [
+                "205.186.187.195"
+            ], 
+            "type": "DN"
+        }, 
+        {
+            "normalized": "www.skyportsystems.com", 
+            "occurances": {
+                "as": "www.skyportsystems.com", 
+                "in line": 5
+            }, 
             "occurences": {
+                "as": "www.skyportsystems.com", 
+                "in line": 5
+            }, 
+            "recordsAType": [
+                "205.186.187.195"
+            ], 
+            "recordsCType": [
+                "skyportsystems.com."
+            ], 
+            "type": "DN"
+        }, 
+        {
+            "normalized": "facebook.com", 
+            "occurances": {
                 "as": "facebook.com", 
                 "in line": 6
+            }, 
+            "occurences": {
+                "as": "www.skyportsystems.com", 
+                "in line": 5
             }, 
             "recordsAType": [
                 "173.252.120.6"
@@ -39,7 +70,7 @@
             "type": "DN"
         }, 
         {
-            "discoveredName": "recursns1.net.umd.edu.", 
+            "discoveredName": "recursns1.umd.edu.", 
             "normalized": "128.8.74.2", 
             "occurences": {
                 "as": "128.8.74.2", 
@@ -48,42 +79,18 @@
             "type": "IPv4"
         }, 
         {
-            "normalized": "facebook.com", 
-            "occurences": {
-                "as": "facebook.com", 
-                "in line": 6
-            }, 
-            "recordsAType": [
-                "173.252.120.6"
-            ], 
-            "recordsCType": [
-                "skyportsystems.com."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "normalized": "facebook.com", 
-            "occurences": {
-                "as": "facebook.com", 
-                "in line": 6
-            }, 
-            "recordsAType": [
-                "173.252.120.6"
-            ], 
-            "recordsCType": [
-                "skyportsystems.com."
-            ], 
-            "type": "DN"
-        }, 
-        {
             "normalized": "tumblr.com", 
-            "occurences": {
+            "occurances": {
                 "as": "tumblr.com", 
                 "in line": 10
             }, 
+            "occurences": {
+                "as": "www.skyportsystems.com", 
+                "in line": 5
+            }, 
             "recordsAType": [
-                "66.6.42.30", 
                 "66.6.43.30", 
+                "66.6.42.30", 
                 "66.6.41.30"
             ], 
             "recordsCType": [
@@ -93,54 +100,34 @@
         }, 
         {
             "normalized": "itunes.apple.com", 
-            "occurences": {
+            "occurances": {
                 "as": "itunes.apple.com", 
                 "in line": 11
             }, 
+            "occurences": {
+                "as": "www.skyportsystems.com", 
+                "in line": 5
+            }, 
             "recordsAType": [
-                "23.210.242.217"
+                "104.68.98.172"
             ], 
             "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
+                "skyportsystems.com."
             ], 
             "type": "DN"
         }, 
         {
             "normalized": "itunes.apple.com", 
+            "occurances": {
+                "as": "itunes.apple.com", 
+                "in line": 11
+            }, 
             "occurences": {
                 "as": "itunes.apple.com", 
                 "in line": 11
             }, 
             "recordsAType": [
-                "23.210.242.217"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "normalized": "itunes.apple.com", 
-            "occurences": {
-                "as": "itunes.apple.com", 
-                "in line": 11
-            }, 
-            "recordsAType": [
-                "23.210.242.217"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "normalized": "itunes.apple.com", 
-            "occurences": {
-                "as": "itunes.apple.com", 
-                "in line": 11
-            }, 
-            "recordsAType": [
-                "23.210.242.217"
+                "104.68.98.172"
             ], 
             "recordsCType": [
                 "itunes-cdn.itunes-apple.com.akadns.net."
@@ -149,49 +136,16 @@
         }, 
         {
             "normalized": "msnbc.com", 
-            "occurences": {
+            "occurances": {
                 "as": "msnbc.com", 
                 "in line": 22
             }, 
-            "recordsAType": [
-                "184.26.108.173"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "discoveredName": "recursns1.net.umd.edu.", 
-            "normalized": "235.10.123.45", 
             "occurences": {
-                "as": "235.10.123.45", 
-                "in line": 23
-            }, 
-            "type": "IPv4"
-        }, 
-        {
-            "normalized": "msnbc.com", 
-            "occurences": {
-                "as": "msnbc.com", 
-                "in line": 22
+                "as": "itunes.apple.com", 
+                "in line": 11
             }, 
             "recordsAType": [
-                "184.26.108.173"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "normalized": "msnbc.com", 
-            "occurences": {
-                "as": "msnbc.com", 
-                "in line": 22
-            }, 
-            "recordsAType": [
-                "184.26.108.173"
+                "172.230.245.55"
             ], 
             "recordsCType": [
                 "itunes-cdn.itunes-apple.com.akadns.net."
@@ -208,90 +162,6 @@
             "type": "IPv4"
         }, 
         {
-            "normalized": "msnbc.com", 
-            "occurences": {
-                "as": "msnbc.com", 
-                "in line": 22
-            }, 
-            "recordsAType": [
-                "184.26.108.173"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "normalized": "msnbc.com", 
-            "occurences": {
-                "as": "msnbc.com", 
-                "in line": 22
-            }, 
-            "recordsAType": [
-                "184.26.108.173"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "normalized": "msnbc.com", 
-            "occurences": {
-                "as": "msnbc.com", 
-                "in line": 22
-            }, 
-            "recordsAType": [
-                "184.26.108.173"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "normalized": "msnbc.com", 
-            "occurences": {
-                "as": "msnbc.com", 
-                "in line": 22
-            }, 
-            "recordsAType": [
-                "184.26.108.173"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "normalized": "msnbc.com", 
-            "occurences": {
-                "as": "msnbc.com", 
-                "in line": 22
-            }, 
-            "recordsAType": [
-                "184.26.108.173"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
-            "normalized": "msnbc.com", 
-            "occurences": {
-                "as": "msnbc.com", 
-                "in line": 22
-            }, 
-            "recordsAType": [
-                "184.26.108.173"
-            ], 
-            "recordsCType": [
-                "itunes-cdn.itunes-apple.com.akadns.net."
-            ], 
-            "type": "DN"
-        }, 
-        {
             "discoveredName": "noc.net.umd.edu.", 
             "normalized": "128.8.5.2", 
             "occurences": {
@@ -302,14 +172,18 @@
         }, 
         {
             "normalized": "apple.com", 
-            "occurences": {
+            "occurances": {
                 "as": "apple.com", 
                 "in line": 35
             }, 
+            "occurences": {
+                "as": "itunes.apple.com", 
+                "in line": 11
+            }, 
             "recordsAType": [
-                "17.178.96.59", 
                 "17.172.224.47", 
-                "17.142.160.59"
+                "17.142.160.59", 
+                "17.178.96.59"
             ], 
             "recordsCType": [
                 "itunes-cdn.itunes-apple.com.akadns.net."
@@ -318,22 +192,26 @@
         }, 
         {
             "normalized": "google.com", 
-            "occurences": {
+            "occurances": {
                 "as": "google.com", 
                 "in line": 37
             }, 
+            "occurences": {
+                "as": "itunes.apple.com", 
+                "in line": 11
+            }, 
             "recordsAType": [
-                "74.125.239.38", 
-                "74.125.239.46", 
                 "74.125.239.33", 
+                "74.125.239.46", 
+                "74.125.239.32", 
+                "74.125.239.37", 
+                "74.125.239.35", 
                 "74.125.239.39", 
                 "74.125.239.41", 
-                "74.125.239.35", 
+                "74.125.239.38", 
                 "74.125.239.36", 
-                "74.125.239.40", 
                 "74.125.239.34", 
-                "74.125.239.32", 
-                "74.125.239.37"
+                "74.125.239.40"
             ], 
             "recordsCType": [
                 "itunes-cdn.itunes-apple.com.akadns.net."
@@ -344,7 +222,33 @@
     "errors": [
         {
             "ErrMessage": "('Non-Existant Domain ', 'www')", 
+            "normalized": "www", 
+            "occurances": {
+                "as": "www", 
+                "in line": 1
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', 'www')", 
+            "normalized": "www", 
+            "occurances": {
+                "as": "www", 
+                "in line": 1
+            }, 
+            "occurences": {
+                "as": "www", 
+                "in line": 1
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "ERROR - Unhandled Exception", 
             "normalized": "www.owasp.org", 
+            "occurances": {
+                "as": "www", 
+                "in line": 1
+            }, 
             "occurences": {
                 "as": "www.owasp.org", 
                 "in line": 2
@@ -354,6 +258,10 @@
         {
             "ErrMessage": "ERROR - Unhandled Exception", 
             "normalized": "www.owasp.org.", 
+            "occurances": {
+                "as": "www", 
+                "in line": 1
+            }, 
             "occurences": {
                 "as": "www.owasp.org.", 
                 "in line": 3
@@ -362,25 +270,11 @@
         }, 
         {
             "ErrMessage": "ERROR - Unhandled Exception", 
-            "normalized": "www.skyportsystems.com", 
-            "occurences": {
-                "as": "www.skyportsystems.com", 
-                "in line": 5
-            }, 
-            "type": "ERROR"
-        }, 
-        {
-            "ErrMessage": "ERROR - Unhandled Exception", 
-            "normalized": "www.skyportsystems.com", 
-            "occurences": {
-                "as": "www.skyportsystems.com", 
-                "in line": 5
-            }, 
-            "type": "ERROR"
-        }, 
-        {
-            "ErrMessage": "ERROR - Unhandled Exception", 
             "normalized": "facebook.com", 
+            "occurances": {
+                "as": "www", 
+                "in line": 1
+            }, 
             "occurences": {
                 "as": "facebook.com", 
                 "in line": 6
@@ -389,7 +283,37 @@
         }, 
         {
             "ErrMessage": "('Non-Existant Domain ', '12345')", 
+            "normalized": "12345", 
+            "occurances": {
+                "as": "12345", 
+                "in line": 8
+            }, 
+            "occurences": {
+                "as": "facebook.com", 
+                "in line": 6
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', '12345')", 
+            "normalized": "12345", 
+            "occurances": {
+                "as": "12345", 
+                "in line": 8
+            }, 
+            "occurences": {
+                "as": "12345", 
+                "in line": 8
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "ERROR - Unhandled Exception", 
             "normalized": "tumblr.com", 
+            "occurances": {
+                "as": "12345", 
+                "in line": 8
+            }, 
             "occurences": {
                 "as": "tumblr.com", 
                 "in line": 10
@@ -397,26 +321,64 @@
             "type": "ERROR"
         }, 
         {
-            "ErrMessage": "ERROR - Unhandled Exception", 
-            "normalized": "itunes.apple.com", 
+            "ErrMessage": "('Non-Existant Domain ', '8.')", 
+            "normalized": "8.", 
+            "occurances": {
+                "as": "8.", 
+                "in line": 12
+            }, 
             "occurences": {
-                "as": "itunes.apple.com", 
-                "in line": 11
+                "as": "tumblr.com", 
+                "in line": 10
             }, 
             "type": "ERROR"
         }, 
         {
-            "ErrMessage": "ERROR - Unhandled Exception", 
-            "normalized": "itunes.apple.com", 
+            "ErrMessage": "('Non-Existant Domain ', '8.')", 
+            "normalized": "8.", 
+            "occurances": {
+                "as": "8.", 
+                "in line": 12
+            }, 
             "occurences": {
-                "as": "itunes.apple.com", 
-                "in line": 11
+                "as": "8.", 
+                "in line": 12
             }, 
             "type": "ERROR"
         }, 
         {
             "ErrMessage": "('Non-Existant Domain ', '1234.dig.com')", 
+            "normalized": "1234.dig.com", 
+            "occurances": {
+                "as": "1234.dig.com", 
+                "in line": 21
+            }, 
+            "occurences": {
+                "as": "8.", 
+                "in line": 12
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', '1234.dig.com')", 
+            "normalized": "1234.dig.com", 
+            "occurances": {
+                "as": "1234.dig.com", 
+                "in line": 21
+            }, 
+            "occurences": {
+                "as": "1234.dig.com", 
+                "in line": 21
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "ERROR - Unhandled Exception", 
             "normalized": "msnbc.com", 
+            "occurances": {
+                "as": "1234.dig.com", 
+                "in line": 21
+            }, 
             "occurences": {
                 "as": "msnbc.com", 
                 "in line": 22
@@ -424,8 +386,129 @@
             "type": "ERROR"
         }, 
         {
+            "ErrMessage": "ERROR - Unhandled Exception", 
+            "normalized": "45.123.10.235.in-addr.arpa.", 
+            "occurances": {
+                "as": "235.10.123.45", 
+                "in line": 23
+            }, 
+            "occurences": {
+                "as": "msnbc.com", 
+                "in line": 22
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', '8888')", 
+            "normalized": "8888", 
+            "occurances": {
+                "as": "8888", 
+                "in line": 24
+            }, 
+            "occurences": {
+                "as": "msnbc.com", 
+                "in line": 22
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', '8888')", 
+            "normalized": "8888", 
+            "occurances": {
+                "as": "8888", 
+                "in line": 24
+            }, 
+            "occurences": {
+                "as": "8888", 
+                "in line": 24
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', '123.456.789.101')", 
+            "normalized": "123.456.789.101", 
+            "occurances": {
+                "as": "123.456.789.101", 
+                "in line": 28
+            }, 
+            "occurences": {
+                "as": "8888", 
+                "in line": 24
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', '123.456.789.101')", 
+            "normalized": "123.456.789.101", 
+            "occurances": {
+                "as": "123.456.789.101", 
+                "in line": 28
+            }, 
+            "occurences": {
+                "as": "123.456.789.101", 
+                "in line": 28
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', '1000.1000.1000.a')", 
+            "normalized": "1000.1000.1000.a", 
+            "occurances": {
+                "as": "1000.1000.1000.a", 
+                "in line": 30
+            }, 
+            "occurences": {
+                "as": "123.456.789.101", 
+                "in line": 28
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', '1000.1000.1000.a')", 
+            "normalized": "1000.1000.1000.a", 
+            "occurances": {
+                "as": "1000.1000.1000.a", 
+                "in line": 30
+            }, 
+            "occurences": {
+                "as": "1000.1000.1000.a", 
+                "in line": 30
+            }, 
+            "type": "ERROR"
+        }, 
+        {
             "ErrMessage": "('Non-Existant Domain ', '010121314')", 
+            "normalized": "010121314", 
+            "occurances": {
+                "as": "010121314", 
+                "in line": 31
+            }, 
+            "occurences": {
+                "as": "1000.1000.1000.a", 
+                "in line": 30
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "('Non-Existant Domain ', '010121314')", 
+            "normalized": "010121314", 
+            "occurances": {
+                "as": "010121314", 
+                "in line": 31
+            }, 
+            "occurences": {
+                "as": "010121314", 
+                "in line": 31
+            }, 
+            "type": "ERROR"
+        }, 
+        {
+            "ErrMessage": "ERROR - Unhandled Exception", 
             "normalized": "apple.com", 
+            "occurances": {
+                "as": "010121314", 
+                "in line": 31
+            }, 
             "occurences": {
                 "as": "apple.com", 
                 "in line": 35
@@ -435,6 +518,10 @@
         {
             "ErrMessage": "ERROR - Unhandled Exception", 
             "normalized": "google.com", 
+            "occurances": {
+                "as": "010121314", 
+                "in line": 31
+            }, 
             "occurences": {
                 "as": "google.com", 
                 "in line": 37
@@ -442,9 +529,9 @@
             "type": "ERROR"
         }
     ], 
-    "linesWithToken": 49, 
+    "linesWithToken": 37, 
     "tokenSkippedAlreadySeen": 5, 
-    "totalErrors": 11, 
-    "totalFQDN": 40, 
+    "totalErrors": 24, 
+    "totalFQDN": 28, 
     "totalIPv4": 4
 }
