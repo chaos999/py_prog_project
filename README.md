@@ -33,7 +33,7 @@ The features of this Utility are
 			    and reduced that
 	
 <h4>Issues</h4>
-
+		- need to add more comments to source code describing the call flows
 
 <h4>Execution & Usage</h4>
 	Program verified with Python Version - 2.7.5 on a Mac (OS X - 10.9.5)
